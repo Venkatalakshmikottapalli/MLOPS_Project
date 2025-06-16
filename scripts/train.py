@@ -12,3 +12,11 @@ def save_model(model, path="outputs/model.pkl"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     joblib.dump(model, path)
     print(f"[INFO] Model saved at {path}")
+
+def save_scaler(scaler, path="outputs/scaler.pkl"):
+    import os
+    import joblib
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    joblib.dump(scaler, path)
+    print(f"[INFO] Scaler saved at {path}")
+
