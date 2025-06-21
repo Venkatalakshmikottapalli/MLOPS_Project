@@ -2,7 +2,7 @@ from scripts.load_data import get_workspace, load_data
 from scripts.preprocess import preprocess_data
 from scripts.train import train_model, save_model, save_scaler  # add save_scaler
 from scripts.evaluate import evaluate_model
-from scripts.register_model import register_model
+from scripts.register_model import register_iris_model  # import your renamed function
 
 
 if __name__ == "__main__":
@@ -25,5 +25,5 @@ if __name__ == "__main__":
     print(f"Accuracy: {acc:.4f}\n")
     print(report)
 
-    # Step 5: Register
-    register_model(ws, "outputs/model.pkl")
+    # Step 5: Register the model using the correct function name
+    register_iris_model(ws, model_dir="outputs", model_name="iris_model")

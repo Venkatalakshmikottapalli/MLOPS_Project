@@ -1,5 +1,5 @@
 {
-    "subscription_id": "b9a6e7b8-714a-41a8-a8c9-8de663821d28",
-    "resource_group": "testgroup",
-    "workspace_name": "mlprojectsample"
+  "subscription_id": "b9a6e7b8-714a-41a8-a8c9-8de663821d28",
+  "resource_group": "testgroup",
+  "workspace_name": "mlprojectsample"
 }
