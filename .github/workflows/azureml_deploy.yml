@@ -1,0 +1,35 @@
+name: Azure ML Deploy on Push
+
+on:
+  push:
+    branches:
+      - main  # Change if using another branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt || true
+          pip install azureml-core azure-identity scikit-learn joblib pandas numpy
+
+      - name: Deploy to Azure ML
+        env:
+          AZUREML_SUBSCRIPTION_ID: ${{ secrets.AZUREML_SUBSCRIPTION_ID }}
+          AZUREML_RESOURCE_GROUP: ${{ secrets.AZUREML_RESOURCE_GROUP }}
+          AZUREML_WORKSPACE_NAME: ${{ secrets.AZUREML_WORKSPACE_NAME }}
+          AZUREML_TENANT_ID: ${{ secrets.AZUREML_TENANT_ID }}
+          AZUREML_CLIENT_ID: ${{ secrets.AZUREML_CLIENT_ID }}
+          AZUREML_CLIENT_SECRET: ${{ secrets.AZUREML_CLIENT_SECRET }}
+        run: |
+          python scripts/deploy.py
